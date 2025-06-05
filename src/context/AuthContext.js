@@ -1,9 +1,9 @@
-import { createContext, useEffect, useState } from "react";
+import { Children, createContext, useEffect, useState } from "react";
 import axios from "axios"
 
 export const AuthContext = createContext()
 
-export function AuthProvider({childred}){
+export function AuthProvider({children}){
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
 
@@ -31,4 +31,23 @@ export function AuthProvider({childred}){
             return { success: false, message: error.response?.data?.message || "Login Failed"}
         }
     }
+
+    const logout = async (navigate) => {
+        try {
+            await axios.post("http://localhost:5000/api/auth/logout", 
+                {withCredentials: true}
+            )
+            setUser(null)
+            localStorage.removeItem("vpUser")
+            navigate("/login")
+        } catch (error) {
+            console.error("Logout Failed: ", error)
+        }
+    }
+
+    return (
+        <AuthContext.Provider value={{ user, login, logout, loading }}>
+            {children}
+        </AuthContext.Provider>
+    )
 }
