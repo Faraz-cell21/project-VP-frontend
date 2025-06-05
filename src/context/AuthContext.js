@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-
+import axios from "axios"
 
 export const AuthContext = createContext()
 
@@ -14,4 +14,21 @@ export function AuthProvider({childred}){
         }
         setLoading(false)
     }, [])
+
+    const login = async (email, password) => {
+        try {
+            const res = await axios.post("http://localhost:5000/api/admin/login",
+                {email, password},
+                {withCredentials: true}
+            )
+
+            if(res.status === 200){
+                setUser(res.data.user)
+                localStorage.setItem("vpUser", JSON.stringify(res.data.user))
+                return {success: true, role: res.data.user.role}
+            }
+        } catch (error) {
+            return { success: false, message: error.response?.data?.message || "Login Failed"}
+        }
+    }
 }
