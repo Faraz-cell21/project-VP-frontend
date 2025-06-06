@@ -11,7 +11,10 @@ function App() {
         <NavBar />
         <main className="flex-grow">
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route 
+              path="/" 
+              element = {<HomePage />} 
+            />
           </Routes>
         </main>
         <Footer />
