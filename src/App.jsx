@@ -9,7 +9,7 @@ function App() {
       <div className="flex flex-col min-h-screen">
         <NavBar />
         <main className="flex-grow">
-          <Route></Route>
+          <Routes></Routes>
         </main>
         <Footer />
       </div>
