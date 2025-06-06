@@ -1,10 +1,19 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import NavBar from "./components/NavBar"
+import Footer from "./components/Footer"
 
 function App() {
 
   return (
-    <>
-      <h1 className="text-3xl text-white">Working on Frontend of Project Vape with vite + react</h1>
-    </>
+    <Router>
+      <div className="flex flex-col min-h-screen">
+        <NavBar />
+        <main className="flex-grow">
+          <Route></Route>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   )
 }
 
