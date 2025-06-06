@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import NavBar from "./components/NavBar"
 import Footer from "./components/Footer"
 import HomePage from "./pages/Homepage"
+import ProductDetail from "./pages/ProductDetail"
 
 function App() {
 
@@ -14,6 +15,10 @@ function App() {
             <Route 
               path="/" 
               element = {<HomePage />} 
+            />
+            <Route
+              path="/product/:productId"
+              element={<ProductDetail />} 
             />
           </Routes>
         </main>
