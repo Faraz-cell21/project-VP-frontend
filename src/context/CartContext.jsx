@@ -1,15 +1,19 @@
+// CartContext.jsx
 import { createContext, useContext, useState } from 'react';
 
 const CartContext = createContext();
-
-export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (product, quantity = 1) => {
-    console.log("Adding to cart:", product);
     setCartItems(prev => {
+      console.log("Previous Cart: ", prev)
+      if (!product || !product._id) {
+        console.warn("❌ Invalid product passed to addToCart:", product);
+        return prev;
+      }
+
       const existing = prev.find(item => item.product._id === product._id);
       if (existing) {
         return prev.map(item =>
@@ -23,11 +27,13 @@ export const CartProvider = ({ children }) => {
     });
   };
 
-  const removeFromCart = productId => {
+  const removeFromCart = (productId) => {
     setCartItems(prev => prev.filter(item => item.product._id !== productId));
   };
 
-  const clearCart = () => setCartItems([]);
+  const clearCart = () => {
+    setCartItems([]);
+  };
 
   return (
     <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart }}>
@@ -35,3 +41,5 @@ export const CartProvider = ({ children }) => {
     </CartContext.Provider>
   );
 };
+
+export const useCart = () => useContext(CartContext);

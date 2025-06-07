@@ -1,8 +1,8 @@
-import { useCart } from '../context/CartContext';
+import { useCart } from '../context/CartContext.jsx';
 import { Link } from 'react-router-dom';
 
 const ProductCard = ({ product }) => {
-  const { addToCart } = useCart();
+  const {addToCart} = useCart();
 
   return (
     <div className="border p-3 rounded shadow-md max-w-xs">

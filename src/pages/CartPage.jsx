@@ -1,9 +1,9 @@
-import { useCart } from '../context/CartContext';
+import { useCart } from '../context/CartContext.jsx';
 import { useState } from 'react';
 import axios from 'axios';
 
 function CartPage() {
-  const { cartItems, removeFromCart, clearCart } = useCart();
+  const { cartItems, removeFromCart, clearCart, addToCart } = useCart();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -60,6 +60,17 @@ function CartPage() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
+        {console.log("Current cart items:", cartItems)}
+        <button
+  onClick={() => addToCart({
+    _id: 'test123',
+    name: 'Sample Product',
+    price: 100
+  })}
+  className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
+>
+  Add Sample Item
+</button>
       <h2 className="text-2xl font-bold mb-6">🛒 Your Cart</h2>
 
       {cartItems.length === 0 ? (
