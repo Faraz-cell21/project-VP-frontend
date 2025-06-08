@@ -7,6 +7,7 @@ import ProductDetail from "./pages/ProductDetail"
 import CartPage from "./pages/CartPage.jsx"
 import { CartProvider } from "./context/CartContext.jsx"
 import AdminLogin from "./pages/AdminLogin.jsx"
+import AdminDashboard from "./pages/AdminDashboard.jsx"
 
 function App() {
 
@@ -32,6 +33,14 @@ function App() {
                 <Route
                   path="/hidden-login"
                   element = {<AdminLogin />} 
+                />
+                <Route 
+                  path="/admin/dashboard"
+                  element = {
+                    <ProtectedRoutes allowedRoles={["Admin", "Owner"]}>
+                      <AdminDashboard />
+                    </ProtectedRoutes>
+                  }
                 />
               </Routes>
             </main>
