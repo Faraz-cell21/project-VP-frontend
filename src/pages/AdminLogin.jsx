@@ -23,7 +23,7 @@ const AdminLogin = () => {
 
       if (user.role === "Admin" || user.role === "Owner") {
         localStorage.setItem("user", JSON.stringify(user));
-        navigate("/admin/dashboard");
+        navigate("/admin");
       } else {
         setError("Unauthorized role");
       }
@@ -38,7 +38,7 @@ const AdminLogin = () => {
         onSubmit={handleLogin}
         className="bg-white p-6 rounded shadow-md w-full max-w-sm"
       >
-        <h2 className="text-xl font-bold mb-4">Admin / Owner Login</h2>
+        <h2 className="text-xl font-bold mb-4">Admin</h2>
         {error && <p className="text-red-500 mb-2">{error}</p>}
 
         <input

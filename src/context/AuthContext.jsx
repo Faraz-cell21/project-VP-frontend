@@ -34,7 +34,7 @@ export function AuthProvider({children}){
 
     const logout = async (navigate) => {
         try {
-            await axios.get("http://localhost:5000/api/auth/logout", 
+            await axios.get("http://localhost:5000/api/admin/logout", 
                 {withCredentials: true}
             )
             setUser(null)

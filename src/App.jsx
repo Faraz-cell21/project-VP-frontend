@@ -5,16 +5,17 @@ import Footer from "./components/Footer"
 import HomePage from "./pages/Homepage"
 import ProductDetail from "./pages/ProductDetail"
 import CartPage from "./pages/CartPage.jsx"
-import { CartProvider } from "./context/CartContext.jsx"
+//import { CartProvider } from "./context/CartContext.jsx"
 import AdminLogin from "./pages/AdminLogin.jsx"
 import AdminDashboard from "./pages/AdminDashboard.jsx"
+import { AuthProvider } from "./context/AuthContext.jsx"
 
 function App() {
 
   return (
       <Router>
         <div className="flex flex-col min-h-screen">
-          <CartProvider>
+          <AuthProvider>
             <NavBar />
             <main className="flex-grow">
               <Routes>
@@ -35,7 +36,7 @@ function App() {
                   element = {<AdminLogin />} 
                 />
                 <Route 
-                  path="/admin/dashboard"
+                  path="/admin"
                   element = {
                     <ProtectedRoutes allowedRoles={["Admin", "Owner"]}>
                       <AdminDashboard />
@@ -45,7 +46,7 @@ function App() {
               </Routes>
             </main>
             <Footer />
-          </CartProvider>
+          </AuthProvider>
         </div>
       </Router>
   )
