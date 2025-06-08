@@ -9,7 +9,7 @@ function ProtectedRoutes({ children, allowedRoles = [] }){
     }
 
     if(!user){
-        return <Navigate to="/login" />
+        return <Navigate to="/" />
     }
 
     if(!Array.isArray(allowedRoles) || !allowedRoles.includes(user.role)){

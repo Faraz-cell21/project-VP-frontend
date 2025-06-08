@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const HiddenLoginPage = () => {
+const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -21,7 +21,7 @@ const HiddenLoginPage = () => {
 
       const user = res.data.data.user;
 
-      if (user.role === "admin" || user.role === "owner") {
+      if (user.role === "Admin" || user.role === "Owner") {
         localStorage.setItem("user", JSON.stringify(user));
         navigate("/admin/dashboard");
       } else {
@@ -68,4 +68,4 @@ const HiddenLoginPage = () => {
   );
 };
 
-export default HiddenLoginPage;
+export default AdminLogin;

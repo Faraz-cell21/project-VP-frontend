@@ -1,10 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import ProtectedRoutes from "./components/ProtectedRoutes.jsx"
 import NavBar from "./components/NavBar"
 import Footer from "./components/Footer"
 import HomePage from "./pages/Homepage"
 import ProductDetail from "./pages/ProductDetail"
 import CartPage from "./pages/CartPage.jsx"
 import { CartProvider } from "./context/CartContext.jsx"
+import AdminLogin from "./pages/AdminLogin.jsx"
 
 function App() {
 
@@ -16,7 +18,7 @@ function App() {
             <main className="flex-grow">
               <Routes>
                 <Route 
-                  path="/" 
+                  path="/"
                   element = {<HomePage />} 
                 />
                 <Route
@@ -26,6 +28,10 @@ function App() {
                 <Route 
                   path="/cart"
                   element = {<CartPage />}
+                />
+                <Route
+                  path="/hidden-login"
+                  element = {<AdminLogin />} 
                 />
               </Routes>
             </main>
