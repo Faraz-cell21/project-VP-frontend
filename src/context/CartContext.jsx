@@ -1,4 +1,3 @@
-// CartContext.jsx
 import { createContext, useContext, useState } from 'react';
 
 const CartContext = createContext();
@@ -10,7 +9,7 @@ export const CartProvider = ({ children }) => {
     setCartItems(prev => {
       console.log("Previous Cart: ", prev)
       if (!product || !product._id) {
-        console.warn("❌ Invalid product passed to addToCart:", product);
+        console.warn("Invalid product passed to addToCart:", product);
         return prev;
       }
 

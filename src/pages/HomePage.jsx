@@ -32,7 +32,7 @@ const HomePage = () => {
               Add to Cart
             </button>
             <Link
-              to={`/product/${product._id}`}
+              to={`/products/${product._id}`}
               className="text-blue-500 hover:underline text-sm"
             >
               View Details
