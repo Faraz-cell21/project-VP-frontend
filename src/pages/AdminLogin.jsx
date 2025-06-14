@@ -21,7 +21,7 @@ const AdminLogin = () => {
 
       const user = res.data.data.user;
 
-      if (user.role === "Admin" || user.role === "Owner") {
+      if (user.role === "Admin") {
         localStorage.setItem("user", JSON.stringify(user));
         navigate("/admin");
       } else {
