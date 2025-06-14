@@ -41,7 +41,7 @@ export function AuthProvider({children}){
             )
             setUser(null)
             localStorage.removeItem("user")
-            navigate("/login")
+            navigate("/hidden-login")
         } catch (error) {
             console.error("Logout Failed: ", error)
         }
