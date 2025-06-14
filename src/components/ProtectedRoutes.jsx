@@ -7,6 +7,7 @@ function ProtectedRoutes({ children, allowedRoles = [] }){
     if(loading){
         return <h1>Loading....</h1>
     }
+    //console.log(`User details: ${user}`)
 
     if(!user){
         return <Navigate to="/admin" />

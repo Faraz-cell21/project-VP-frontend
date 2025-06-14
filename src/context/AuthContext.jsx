@@ -5,10 +5,11 @@ export const AuthContext = createContext()
 
 export function AuthProvider({children}){
     const [user, setUser] = useState(null)
+    //console.log(`before login user: ${user}`)
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        const storedUser = localStorage.getItem("vpUser")
+        const storedUser = localStorage.getItem("user")
         if(storedUser){
             setUser(JSON.parse(storedUser))
         }
@@ -24,7 +25,8 @@ export function AuthProvider({children}){
 
             if(res.status === 200){
                 setUser(res.data.user)
-                localStorage.setItem("vpUser", JSON.stringify(res.data.user))
+                //console.log(`user in Auth: ${user}`)
+                localStorage.setItem("user", JSON.stringify(res.data.user))
                 return {success: true, role: res.data.user.role}
             }
         } catch (error) {
@@ -38,7 +40,7 @@ export function AuthProvider({children}){
                 {withCredentials: true}
             )
             setUser(null)
-            localStorage.removeItem("vpUser")
+            localStorage.removeItem("user")
             navigate("/login")
         } catch (error) {
             console.error("Logout Failed: ", error)
